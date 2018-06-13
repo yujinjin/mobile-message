@@ -1,5 +1,5 @@
 ## mobile-message
-mobile-message是一个基于移动端的弹窗组件，它可以包含任何Html内容可以自定义弹窗的样式，也可以加入自定以的弹窗动画。
+mobile-message是一个基于移动端的弹窗组件，默认提供info、success、warning、error、alert、confirm、multiple、vertical、bottomSheet、prompt，可自定义弹窗。它可以包含任何Html内容可以自定义弹窗的样式，也可以加入自定以的弹窗动画。
 
 网上关于弹窗的组件也很多，就算是自己写代码也很少很简单。但mobile-message有一下3个不同的特点。
 - 弹窗是单例模式，就是只有一个实例。这体现在当多个弹窗展示时只会显示最后一个弹窗的内容，比如：当前正在展示的是弹窗A，代码又调用了弹窗B，这个时候就会把弹窗A的内容变成弹窗B的内容，记住是变成而不是常规的先把弹窗A关掉然后再显示弹窗B。
