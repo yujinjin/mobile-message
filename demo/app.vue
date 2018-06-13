@@ -78,85 +78,66 @@ export default {
     	},
     	
     	multiple() {
-    		this.$message({
-    			title: "提示信息",
-    			className: "multiple",
-    			isShowMask: true,
-    			autoHide: false,
-    			contents: "我认识的一个女生嫁去日本了，以为再也见不到她了，直到有一天我下载了一个种子",
-    			buttons: [{
-					label: "现在升级",
-					callback: function($body){
-						console.info("您点击了‘现在升级’按钮, 本按钮点击返回值是false就不自动关闭弹窗");
-						// 如果返回值是false就不自动关闭弹窗
-						return false;
-					}
-				}, {
-					label: "下次再说",
-					callback: function($body){
-						console.info("您点击了‘下次再说’按钮！");
-					}
-				}, {
-					label: "不再提醒",
-					callback: function($body){
-						console.info("您点击了‘不再提醒’按钮！");
-					}
-				}]
-    		});
+    		this.$message.multiple("我认识的一个女生嫁去日本了，以为再也见不到她了，直到有一天我下载了一个种子", [{
+				label: "现在升级",
+				callback: function($body){
+					console.info("您点击了‘现在升级’按钮, 本按钮点击返回值是false就不自动关闭弹窗");
+					// 如果返回值是false就不自动关闭弹窗
+					return false;
+				}
+			}, {
+				label: "下次再说",
+				callback: function($body){
+					console.info("您点击了‘下次再说’按钮！");
+				}
+			}, {
+				label: "不再提醒",
+				callback: function($body){
+					console.info("您点击了‘不再提醒’按钮！");
+				}
+			}]);
     	},
     	
     	vertical(){
-    		this.$message({
-    			title: "提示信息",
-    			className: "vertical",
-    			isShowMask: true,
-    			autoHide: false,
-    			contents: "开例会时候放了巨响的连环屁，然后大家都笑了，然后男领导也笑的崩屁了，接着就是女领导，，，，，最终食堂师傅被炒鱿鱼了",
-    			buttons: [{
-					label: "现在升级",
-					callback: function($body){
-						console.info("您点击了‘现在升级’按钮, 本按钮点击返回值是false就不自动关闭弹窗");
-						// 如果返回值是false就不自动关闭弹窗
-						return false;
-					}
-				}, {
-					label: "下次再说",
-					callback: function($body){
-						console.info("您点击了‘下次再说’按钮！");
-					}
-				}, {
-					label: "不再提醒",
-					callback: function($body){
-						console.info("您点击了‘不再提醒’按钮！");
-					}
-				}]
-    		});
+    		this.$message.vertical("开例会时候放了巨响的连环屁，然后大家都笑了，然后男领导也笑的崩屁了，接着就是女领导，，，，，最终食堂师傅被炒鱿鱼了", [{
+				label: "现在升级",
+				callback: function($body){
+					console.info("您点击了‘现在升级’按钮, 本按钮点击返回值是false就不自动关闭弹窗");
+					// 如果返回值是false就不自动关闭弹窗
+					return false;
+				}
+			}, {
+				label: "下次再说",
+				callback: function($body){
+					console.info("您点击了‘下次再说’按钮！");
+				}
+			}, {
+				label: "不再提醒",
+				callback: function($body){
+					console.info("您点击了‘不再提醒’按钮！");
+				}
+			}]);
     	},
     	
     	bottomSheet(){
-    		this.$message({
-    			className: "bottom-sheet",
-    			isShowMask: true,
-    			contents: "我是一个苦b的程序员，今晚加班到快通宵了，困得快睁不开眼了，女上司很关心，问我要不要吃宵夜。我没好气地说，宵夜就算了，能让我睡一觉就行了。女上司红着脸说了句讨厌",
-    			buttons: [{
-					label: "现在升级",
-					callback: function($body){
-						console.info("您点击了‘现在升级’按钮, 本按钮点击返回值是false就不自动关闭弹窗");
-						// 如果返回值是false就不自动关闭弹窗
-						return false;
-					}
-				}, {
-					label: "下次再说",
-					callback: function($body){
-						console.info("您点击了‘下次再说’按钮！");
-					}
-				}, {
-					label: "不再提醒",
-					callback: function($body){
-						console.info("您点击了‘不再提醒’按钮！");
-					}
-				}]
-    		});
+    		this.$message.bottomSheet("我是一个苦b的程序员，今晚加班到快通宵了，困得快睁不开眼了，女上司很关心，问我要不要吃宵夜。我没好气地说，宵夜就算了，能让我睡一觉就行了。女上司红着脸说了句讨厌", [{
+				label: "现在升级",
+				callback: function($body){
+					console.info("您点击了‘现在升级’按钮, 本按钮点击返回值是false就不自动关闭弹窗");
+					// 如果返回值是false就不自动关闭弹窗
+					return false;
+				}
+			}, {
+				label: "下次再说",
+				callback: function($body){
+					console.info("您点击了‘下次再说’按钮！");
+				}
+			}, {
+				label: "不再提醒",
+				callback: function($body){
+					console.info("您点击了‘不再提醒’按钮！");
+				}
+			}]);
     	},
     	
     	prompt() {

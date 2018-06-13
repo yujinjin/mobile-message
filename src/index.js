@@ -57,7 +57,7 @@ export default (function(){
 	}
 	// 显示弹窗
 	const showMessage = function(options) {
-		let _options = Object.assign({}, defaults, options);
+		let _options = Object.assign({}, defaults, options, {show: false});
 		if(!messageInstance) {
 			messageInstance = createInstance(_options);
 			document.body.appendChild(messageInstance.$el);
@@ -143,7 +143,7 @@ export default (function(){
 		},
 		// 错语提示
 		error: function (contents, callBackFun, options) {
-			let _options = initMessageOptions(contents || "出错了!", callBackFun, options, "error");
+			let _options = initMessageOptions(contents || "出错了!", callBackFun, Object.assign(options||{}, {isShowMask: true}), "error");
 			if(!_options.delay){
 				//默认3秒隐藏
 				_options.delay = 30000;
@@ -151,7 +151,7 @@ export default (function(){
 			return showMessage(_options);
 		},
 		// 确认提示
-		alert: function (contents, callback, title, label) {
+		alert: function (contents, callBackFun, title, label) {
 			let _options = {
 				title: title || "提示",
 				className: "alert",
@@ -161,7 +161,7 @@ export default (function(){
 				buttons: [{
 					className: "alert",
 					label: label || "确认",
-					callback: callback
+					callback: callBackFun
 				}]
 			};
 			if(typeof(contents) === "object") {
@@ -172,7 +172,7 @@ export default (function(){
 			return showMessage(_options);
 		},
 		// 确认or取消提示
-		confirm: function (contents, callback, buttons, title) {
+		confirm: function (contents, callBackFun, buttons, title) {
 			var _options = {
 				title: title || "提示",
 				className: "confirm",
@@ -184,13 +184,13 @@ export default (function(){
 					className: "cancel",
 					label: "取消",
 					callback: function($body){
-						callback(false, $body);
+						callBackFun(false, $body);
 					}
 				}, {
 					className: "ok",
 					label: "确认",
 					callback: function($body){
-						callback(true, $body);
+						callBackFun(true, $body);
 					}
 				}]
 			};
@@ -206,7 +206,7 @@ export default (function(){
 		},
 		
 		// 提示输入框
-		prompt(title, callBackFun, options) {
+		prompt(title, callBackFun, labels, options) {
     		var _options = {
 				title: title || "提示",
 				className: "prompt",
@@ -232,7 +232,57 @@ export default (function(){
 					}
 				}]
 			};
+			if(labels && labels instanceof Array) {
+				_options.buttons[0].label = labels[0] ? labels[0] : _options.buttons[0].label;
+				_options.buttons[1].label = labels[1] ? labels[1] : _options.buttons[1].label;
+			}
 			if(options && typeof(options) === "object") {
+				_options = Object.assign(_options, options);
+			}
+			return showMessage(_options);
+    	},
+    	
+    	// 多个按钮并排
+    	multiple(contents, buttons, title, options){
+    		var _options = {
+    			title: title || "提示信息",
+    			className: "multiple",
+    			isShowMask: true,
+    			autoHide: false,
+    			contents: contents,
+    			buttons: buttons
+    		}
+    		if(options && typeof(options) === "object") {
+				_options = Object.assign(_options, options);
+			}
+			return showMessage(_options);
+    	},
+    	
+    	// 多个按钮竖排
+    	vertical(contents, buttons, title, options) {
+    		var _options = {
+    			title: title || "提示信息",
+    			className: "vertical",
+    			isShowMask: true,
+    			autoHide: false,
+    			contents: contents,
+    			buttons: buttons
+    		}
+    		if(options && typeof(options) === "object") {
+				_options = Object.assign(_options, options);
+			}
+			return showMessage(_options);
+    	},
+    	
+    	// 多个按钮底部
+    	bottomSheet(contents, buttons, options){
+    		var _options = {
+    			className: "bottom-sheet",
+    			isShowMask: true,
+    			contents: contents,
+    			buttons: buttons
+    		}
+    		if(options && typeof(options) === "object") {
 				_options = Object.assign(_options, options);
 			}
 			return showMessage(_options);

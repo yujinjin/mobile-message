@@ -10,7 +10,8 @@
 	},
 	"scripts": {
 		"demo": "webpack --config config/demo.config.js",
-		"compile": "webpack --config config/compile.config.js"
+		"compile": "webpack --config config/compile.config.js",
+		"build": "webpack --config config/build.config.js"
 	},
 	"keywords": [
 	    "vue",

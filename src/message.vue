@@ -3,7 +3,7 @@
 		<div class="message-dialog" :class="className">
 			<div class="message-content" v-bind:style="{height: height || 'inherit'}" @click.stop.prevent>
 				<div class="message-header" v-if="title">
-					<h4 class="message-title" v-html="title"></h4>
+					<div class="message-title" v-html="title"></div>
 				</div>
 				<div class="message-body" ref="body" v-if="contents">
 					<div class="message-body-content" v-html="dynamicContents"></div>
@@ -19,22 +19,22 @@
 	module.exports = {
 		data: function() {
 			return {
-				initCallback: null, // 初始化后的回调方法
+				initCallback: null, // 初始化后的弹窗的回调函数（会传入当前弹窗的$body参数）
 				show: false, // 是否显示弹层
-				isShowMask: false, // 是否显示遮罩层
-				icon: "", // 内容消息的icon，默认提供：message-info,message-success,message-warning,message-error
-				autoHide: true, //点击遮罩层是否隐藏
+				isShowMask: false, // 是否显示弹层的遮罩层
+				icon: "", // 内容消息的icon，默认提供：message-icon-info,message-icon-success,message-icon-warning,message-icon-error
+				autoHide: true, //点击遮罩层是否自动隐藏
 				// animated: true, //是否添加动画
-				className: null,
-				contents: null, //
-				title: null, //标题
-				height: null, //弹层高度
-				buttons: [], //{className|label|callback}
-				onClose: null, // 用户关闭后的方法
+				className: null, // 弹层的样式名称
+				contents: null, // 弹窗的内容（支持HTML），如果为null或者''就不会展示
+				title: null, // 弹窗的头部标题，如果为null或者''就不会展示
+				height: 'inherit', // 弹层高度（默认'inherit'）
+				buttons: [], //弹层的底部按钮列表[{className|label|callback}],如果为null或者数组长度为0就不会展示
+				onClose: null, // 用户关闭后的回调函数（系统自定义）
 				scrollerData: {
 					startPageY: 0, // touchstart 垂直位置
 					startMaxScroll: 0, // touchstart 最大滚动垂直
-					elScroll: null,
+					elScroll: null, // 当前滚动事件的dom元素
 					selectorScrollable: null // 指定标记的滚动元素，如果为null就指定默认元素，指定子元素或父元素皆可
 				} // scroller事件对象数据，如果是false或null表示不绑定事件
 			}
@@ -135,7 +135,6 @@
 					}
 					let elScroll = this.scrollerData.elScroll;
 					if(!elScroll) {
-						console.info(elScroll)
 						return;
 					}
 					// 移动距离
@@ -296,7 +295,7 @@
 				border-radius: 7px;
 				transition: all .3s ease;
 				box-sizing: border-box;
-				.message-header h4 {
+				.message-header .message-title {
 					font-size: 16px;
 					font-weight: 300;
 					color: #333;
@@ -356,7 +355,7 @@
 					width: 270px;
 					border-radius: 10px;
 					
-					.message-header h4 {
+					.message-header .message-title {
 						font-size: 17px;
 						font-weight: bold;
 						color: #000;
@@ -401,7 +400,7 @@
 			}
 			
 			&.prompt .message-content {
-				.message-header h4 {
+				.message-header .message-title {
 					font-size: 15px;
 					font-weight: normal;
 					color: #000;
