@@ -36,9 +36,9 @@ export default (function(){
 				return;
 			}
 		}
-		messageInstance.destroy();
-		messageInstance.$el.parentNode.removeChild(messageInstance.$el)
 		if(messageInstance) {
+			messageInstance.destroy();
+			messageInstance.$el.parentNode.removeChild(messageInstance.$el);
 			messageInstance = null;
 		}
 		if(delayCloseTimerId) {
