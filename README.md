@@ -56,6 +56,16 @@ Vue.use(MobileMessage, {
 });
 
 ```
+作为JS 对象
+```javascript
+import MobileMessage from 'mobile-message'
+import 'mobile-message/dist/message.css'
+
+let message = MobileMessage.get({});
+message(...);
+message.success(...);
+...
+```
 ## 配置选项
 
 名称 | 描述 | 默认值 | 可选项

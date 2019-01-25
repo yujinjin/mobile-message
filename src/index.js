@@ -4,9 +4,10 @@
  * 描述：弹窗插件
  */
 import Message from './message.vue';
+import Vue from 'vue';
 
 export default (function(){
-	let ModalsConstructor = null;
+	let ModalsConstructor = Vue.extend(Message);
 	// 弹窗实例
 	let [messageInstance, delayCloseTimerId] = [null, null];
 	// 默认配置选项
@@ -299,8 +300,14 @@ export default (function(){
 			if(options) {
 				defaults = Object.assign(defaults, options);
 			}
-			ModalsConstructor = Vue.extend(Message);
 			Vue.prototype.$message = message;
+		},
+		
+		get(options) {
+			if(options) {
+				defaults = Object.assign(defaults, options);
+			}
+			return message;
 		}
 	}
 })()
