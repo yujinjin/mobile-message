@@ -35,7 +35,7 @@ npm install mobile-message
 ```javascript
 import Vue from 'vue'
 import MobileMessage from 'mobile-message'
-import 'mobile-message/dist/mobile-message.css'
+import 'mobile-message/dist/message.css'
 
 // VUE use
 Vue.use(MobileMessage);
