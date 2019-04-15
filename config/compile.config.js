@@ -14,6 +14,9 @@ const config = {
         library: 'message',
         libraryTarget: 'umd'
     },
+    externals: {
+    	vue: 'vue'
+    },
     module: {
         rules: [{
             test: /\.html$/,
