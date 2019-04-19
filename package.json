@@ -1,6 +1,6 @@
 {
 	"name": "mobile-message",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "'mobile-message'是移动端的弹窗组件。",
 	"main": "dist/message.js",
 	"unpkg": "dist/message.js",

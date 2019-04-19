@@ -185,13 +185,13 @@ export default (function(){
 					className: "cancel",
 					label: "取消",
 					callback: function($body){
-						callBackFun(false, $body);
+						return callBackFun(false, $body);
 					}
 				}, {
 					className: "ok",
 					label: "确认",
 					callback: function($body){
-						callBackFun(true, $body);
+						return callBackFun(true, $body);
 					}
 				}]
 			};
@@ -220,7 +220,7 @@ export default (function(){
 					label: "取消",
 					callback: function($body){
 						if(callBackFun && typeof(callBackFun) === "function"){
-							callBackFun(false, $body.querySelector("input[type='text']").value, $body);
+							return callBackFun(false, $body.querySelector("input[type='text']").value, $body);
 						}
 					}
 				}, {
@@ -228,7 +228,7 @@ export default (function(){
 					label: "确认",
 					callback: function($body){
 						if(callBackFun && typeof(callBackFun) === "function"){
-							callBackFun(true, $body.querySelector("input[type='text']").value, $body);
+							return callBackFun(true, $body.querySelector("input[type='text']").value, $body);
 						}
 					}
 				}]
