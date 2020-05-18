@@ -200,7 +200,18 @@ export default (function(){
 			} else if(typeof(contents) === "string") {
 				_options.contents = contents;
 			}
-			if(buttons){
+			if(buttons && buttons.length == 2){
+				if(typeof(buttons[0]) == "string") {
+					_options.buttons[0].label = buttons[0];
+				} else {
+					Object.assign(_options.buttons[0], buttons[0]);
+				}
+				if(typeof(buttons[1]) == "string") {
+					_options.buttons[1].label = buttons[1];
+				} else {
+					Object.assign(_options.buttons[1], buttons[1]);
+				}
+			} else if(buttons){
 				_options.buttons = buttons;
 			}
 			return showMessage(_options);
